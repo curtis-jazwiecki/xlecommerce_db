@@ -26542,6 +26542,7 @@ CREATE TABLE IF NOT EXISTS `products_attributes` (
   `price_prefix` char(1) DEFAULT '',
   `products_options_sort_order` int(10) unsigned NOT NULL DEFAULT '0',
   `attributes_hide_from_groups` int(11) NOT NULL,
+  `obn_attribute` TINYINT( 2 ) NOT NULL DEFAULT '0' COMMENT '0 = created by admin, 1= created by feed',
   PRIMARY KEY (`products_attributes_id`),
   KEY `products_id` (`products_id`),
   KEY `options_values_id` (`options_id`,`options_values_id`),
@@ -26707,6 +26708,7 @@ CREATE TABLE IF NOT EXISTS `product_for_the_day` (
 CREATE TABLE IF NOT EXISTS `product_specifications` (
   `products_id` int(11) NOT NULL,
   `specification_id` int(11) NOT NULL,
+  `obn_spec` TINYINT( 2 ) NOT NULL DEFAULT '0' COMMENT '0 = created by admin, 1= created by feed',
   UNIQUE KEY `products_id_2` (`products_id`,`specification_id`),
   KEY `specification_id` (`specification_id`),
   KEY `products_id` (`products_id`)

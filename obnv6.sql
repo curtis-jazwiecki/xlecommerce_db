@@ -1,4 +1,3 @@
-CREATE TABLE IF NOT EXISTS `action_recorder` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `module` varchar(255) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
@@ -276,6 +275,15 @@ INSERT INTO `admin_files` (`admin_files_id`, `admin_files_name`, `admin_files_is
 (191, 'layout_manager.php', 0, 1, '1', '0'),
 (192, 'modules_boxes.php', 0, 4, '1', '0'),
 (193, 'modules_boxes_layout.php', 0, 1, '1', '0');
+
+CREATE TABLE IF NOT EXISTS `orders_status_id` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent` varchar(64) NOT NULL,
+  `name` varchar(256) NOT NULL,
+  `keywords` varchar(256) NOT NULL,
+  `file` varchar(256) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=148 ;
 
 CREATE TABLE IF NOT EXISTS `admin_functionality_search` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -26391,6 +26399,18 @@ CREATE TABLE IF NOT EXISTS `orders_status` (
   PRIMARY KEY (`orders_status_id`,`language_id`),
   KEY `idx_orders_status_name` (`orders_status_name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO `orders_status` (`orders_status_id`, `language_id`, `orders_status_name`) VALUES
+(1, 1, 'Pending'),
+(2, 1, 'Processing'),
+(3, 1, 'Shipped'),
+(6, 1, 'Backordered'),
+(7, 1, 'Cancelled'),
+(8, 1, 'Hold For Store Pickup'),
+(9, 1, 'PayPal [Transactions]'),
+(10, 1, 'Preparing [PayPal Pro HS]'),
+(11, 1, 'Preparing [PayPal Pro HS]'),
+(12, 1, 'Preparing [PayPal Pro HS]');
 
 CREATE TABLE IF NOT EXISTS `orders_status_history` (
   `orders_status_history_id` int(11) NOT NULL AUTO_INCREMENT,

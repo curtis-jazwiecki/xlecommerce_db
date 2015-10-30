@@ -1,4 +1,5 @@
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `action_recorder` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
   `module` varchar(255) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `user_name` varchar(255) DEFAULT NULL,

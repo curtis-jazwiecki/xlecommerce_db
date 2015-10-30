@@ -276,15 +276,6 @@ INSERT INTO `admin_files` (`admin_files_id`, `admin_files_name`, `admin_files_is
 (192, 'modules_boxes.php', 0, 4, '1', '0'),
 (193, 'modules_boxes_layout.php', 0, 1, '1', '0');
 
-CREATE TABLE IF NOT EXISTS `orders_status_id` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent` varchar(64) NOT NULL,
-  `name` varchar(256) NOT NULL,
-  `keywords` varchar(256) NOT NULL,
-  `file` varchar(256) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=148 ;
-
 CREATE TABLE IF NOT EXISTS `admin_functionality_search` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `parent` varchar(64) NOT NULL,

@@ -14,8 +14,8 @@ CREATE TABLE IF NOT EXISTS `action_recorder` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 INSERT INTO `action_recorder` (`id`, `module`, `user_id`, `user_name`, `identifier`, `success`, `date_added`) VALUES
-(1, 'ar_admin_login', 25, 'Kavita ', '122.161.218.119', '1', '2015-04-14 02:22:13'),
-(2, 'ar_admin_login', 2, 'Kavita Developer', '122.161.218.119', '1', '2015-04-14 02:50:02');
+(1, 'ar_admin_login', 25, 'Dev', '122.161.218.119', '1', '2015-04-14 02:22:13'),
+(2, 'ar_admin_login', 2, 'Dev Team', '122.161.218.119', '1', '2015-04-14 02:50:02');
 
 CREATE TABLE IF NOT EXISTS `address_book` (
   `address_book_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 INSERT INTO `admin` (`admin_id`, `admin_groups_id`, `admin_firstname`, `admin_lastname`, `admin_email_address`, `admin_password`, `admin_email_username`, `admin_email_password`, `admin_created`, `admin_modified`, `admin_logdate`, `admin_lognum`) VALUES
 (1, 1, 'Outdoor', 'Business Network', 'webmaster@outdoorbusinessnetwork.com', '9b28cd98d8a7e99386be3aa21c6b748f:4a', '', '', '2008-08-04 16:41:51', '2012-10-30 09:54:30', '2015-04-10 11:03:13', 1636),
-(2, 1, 'Dev', 'Teamr', 'devteam@cloudcommerce.org', '89d7a869468f13864b339668c8343af8:6c', '', '', '2008-08-04 16:44:16', '2015-04-08 04:20:13', '2015-04-14 02:50:02', 1699),
+(2, 1, 'Dev', 'Team', 'devteam@cloudcommerce.org', '89d7a869468f13864b339668c8343af8:6c', '', '', '2008-08-04 16:44:16', '2015-04-08 04:20:13', '2015-04-14 02:50:02', 1699),
 (4, 2, 'Curt', 'Jazwiecki', 'curt@outdoorbusinessnetwork.com', 'a6928180111aaec2944b33d4f4213c5f:06', '', '', '2012-04-13 14:29:33', '0000-00-00 00:00:00', NULL, 0),
 (24, 1, 'david', 'harris', 'dharris@outdoorbusinessnetwork.com', 'fe5a8dce4d5fbcfa78e8836516b1bcba:00', 'dharris@outdoorbusinessnetwork.com', '', '2015-04-10 11:03:51', '2015-04-10 11:05:05', '2015-04-10 11:05:18', 2);
 

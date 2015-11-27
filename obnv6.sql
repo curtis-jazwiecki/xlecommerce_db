@@ -27533,3 +27533,5 @@ CREATE TABLE IF NOT EXISTS `header_tags_selection` (
   `fillmetadesc_length` varchar(255) NOT NULL,
   PRIMARY KEY (`header_tags_selection_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=83 ;
+
+ALTER TABLE `orders_products_attributes` CHANGE `products_options_values` `products_options_values` VARCHAR( 255 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '';

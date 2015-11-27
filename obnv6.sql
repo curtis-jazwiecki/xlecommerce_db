@@ -26348,7 +26348,7 @@ CREATE TABLE IF NOT EXISTS `orders_products_attributes` (
   `orders_id` int(11) NOT NULL DEFAULT '0',
   `orders_products_id` int(11) NOT NULL DEFAULT '0',
   `products_options` varchar(32) NOT NULL DEFAULT '',
-  `products_options_values` varchar(255) NOT NULL DEFAULT '',
+  `products_options_values` varchar(32) NOT NULL DEFAULT '',
   `options_values_price` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `price_prefix` char(1) NOT NULL DEFAULT '',
   PRIMARY KEY (`orders_products_attributes_id`)

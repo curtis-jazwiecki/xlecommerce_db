@@ -26395,6 +26395,18 @@ CREATE TABLE IF NOT EXISTS `orders_status` (
   KEY `idx_orders_status_name` (`orders_status_name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+INSERT INTO `orders_status` (`orders_status_id`, `language_id`, `orders_status_name`) VALUES
+(1, 1, 'Pending'),
+(2, 1, 'Processing'),
+(3, 1, 'Shipped'),
+(6, 1, 'Backordered'),
+(7, 1, 'Cancelled'),
+(8, 1, 'Hold For Store Pickup'),
+(9, 1, 'PayPal [Transactions]'),
+(10, 1, 'Preparing [PayPal Pro HS]'),
+(11, 1, 'Preparing [PayPal Pro HS]'),
+(12, 1, 'Preparing [PayPal Pro HS]');
+
 CREATE TABLE IF NOT EXISTS `orders_status_history` (
   `orders_status_history_id` int(11) NOT NULL AUTO_INCREMENT,
   `orders_id` int(11) NOT NULL DEFAULT '0',

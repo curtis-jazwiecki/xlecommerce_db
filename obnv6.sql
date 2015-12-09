@@ -27534,4 +27534,14 @@ CREATE TABLE IF NOT EXISTS `header_tags_selection` (
   PRIMARY KEY (`header_tags_selection_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=83 ;
 
+CREATE TABLE IF NOT EXISTS `countries_off` (
+  `countries_id` int(11) NOT NULL AUTO_INCREMENT,
+  `countries_name` varchar(64) NOT NULL DEFAULT '',
+  `countries_iso_code_2` char(2) NOT NULL DEFAULT '',
+  `countries_iso_code_3` char(3) NOT NULL DEFAULT '',
+  `address_format_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`countries_id`),
+  KEY `IDX_COUNTRIES_NAME` (`countries_name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=240 ;
+
 ALTER TABLE `orders_products_attributes` CHANGE `products_options_values` `products_options_values` VARCHAR( 255 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '';

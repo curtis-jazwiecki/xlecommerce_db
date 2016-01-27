@@ -1208,7 +1208,8 @@ INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configu
 (1889, 'Shipping Cost', 'MODULE_SHIPPING_FLAT_COST', '5.00', 'The shipping cost for all orders using this shipping method.', 6, 0, NULL, '2015-03-25 07:34:33', NULL, NULL),
 (1890, 'Tax Class', 'MODULE_SHIPPING_FLAT_TAX_CLASS', '0', 'Use the following tax class on the shipping fee.', 6, 0, NULL, '2015-03-25 07:34:33', 'tep_get_tax_class_title', 'tep_cfg_pull_down_tax_classes('),
 (1891, 'Shipping Zone', 'MODULE_SHIPPING_FLAT_ZONE', '0', 'If a zone is selected, only enable this shipping method for that zone.', 6, 0, NULL, '2015-03-25 07:34:33', 'tep_get_zone_class_title', 'tep_cfg_pull_down_zone_classes('),
-(1892, 'Sort Order', 'MODULE_SHIPPING_FLAT_SORT_ORDER', '0', 'Sort order of display.', 6, 0, NULL, '2015-03-25 07:34:33', NULL, NULL);
+(1892, 'Sort Order', 'MODULE_SHIPPING_FLAT_SORT_ORDER', '0', 'Sort order of display.', 6, 0, NULL, '2015-03-25 07:34:33', NULL, NULL),
+(1966, 'Enable Force SSL', 'ENABLE_FORCE_SSL', 'True', 'Enable Force SSL', 1, 99999, '2015-12-10 02:10:10', '2015-12-09 00:00:00', NULL, 'tep_cfg_select_option(array(''True'', ''False''),');
 
 CREATE TABLE IF NOT EXISTS `configuration_group` (
   `configuration_group_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -1529,8 +1530,8 @@ CREATE TABLE IF NOT EXISTS `coupons` (
   `coupon_expire_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `uses_per_coupon` int(5) NOT NULL DEFAULT '1',
   `uses_per_user` int(5) NOT NULL DEFAULT '0',
-  `restrict_to_products` varchar(255) DEFAULT NULL,
-  `restrict_to_categories` varchar(255) DEFAULT NULL,
+  `restrict_to_products` text,
+  `restrict_to_categories` text,
   `restrict_to_customers` text,
   `coupon_active` char(1) NOT NULL DEFAULT 'Y',
   `date_created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -20006,9 +20007,9 @@ CREATE TABLE IF NOT EXISTS `email_templates` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 INSERT INTO `email_templates` (`email_templates_id`, `email_templates_key`, `email_templates_name`, `email_templates_content`, `email_templates_variables`) VALUES
-(1, 'EMAIL_TEMPLATE_SIGNUP', 'Sign Up Mail', '<p>Dear {TITLE} {FIRST_NAME} {LAST_NAME} ,</p><p>&nbsp;</p><p>We welcome you to&nbsp; <strong>{STORE_OWNER}</strong></p><p>&nbsp;</p><p>You can now take part in the <strong>various services </strong>we have to offer you. </p><p>Some of these services including: </p><ul><li><strong>Permanent Cart</strong> - Any products added to your online cart remain there until you remove them, or check them out. <br /></li><li><strong>Address Book</strong> - We can now deliver your products to another address other than yours! This is perfect to send birthday gifts direct to the birthday-person themselves.</li><li><strong>Order History</strong> - View your history of purchases that you have made with us.</li><li><strong>Products Reviews</strong> - Share your opinions on products with our other customers.</li></ul><br />For help with any of our online services, please email the store-owner: {STORE_OWNER_EMAIL}<br /><p>&nbsp;</p><p><strong>Note:</strong> This email address was given to us by one of our customers. If you did not signup to be a member, please send an email to {STORE_OWNER_EMAIL} . </p><p>&nbsp;</p><p>As part of our welcome to new customers, we have sent you an e-Gift Voucher worth {GIFT_VOUCHER_AMOUNT}</p><p>The redeem code for the e-Gift Voucher is {GIFT_VOUCHER}, you can enter the redeem code when checking out while making a purchase or by following this link {GIFT_VOUCHER_LINK}.</p><p>&nbsp;</p><p>Congratulations, to make your first visit to our online shop a more rewarding experience we are sending you an e-Discount Coupon.</p><p>Below are details of the Discount Coupon created just for you</p><p>&nbsp;{DISCOUNT_COUPON}</p><p>&nbsp;{DISCOUNT_COUPON_AMOUNT}</p><p>&nbsp;To use the coupon enter the redeem code which is {DISCOUNT_COUPON} during checkout while making a purchase</p><p>&nbsp; </p><h3>&nbsp;<strong>{STORE_OWNER}</strong></h3>', '{FIRST_NAME},{LAST_NAME},{DISCOUNT_COUPON},{GIFT_VOUCHER},{TITLE},{GIFT_VOUCHER_AMOUNT},{DISCOUNT_COUPON_AMOUNT},{STORE_OWNER},{STORE_OWNER_EMAIL},{GIFT_VOUCHER_LINK}'),
-(2, 'EMAIL_TEMPLATE_ORDER_SUCCESS', 'Order Success Mail', '<div class="moz-text-plain" style="font-family: -moz-fixed; font-size: 14px"><pre>OBN/Kroll Demonstration Site</pre><pre>&nbsp;</pre><pre> ------------------------------------------------------ </pre><pre>Order Number: {ORDER_ID}</pre><pre>Detailed Invoice: {INVOICE_LINK}</pre><pre>Date Ordered: {ORDER_DATE} </pre><pre>&nbsp;</pre><pre>Products</pre><pre> ------------------------------------------------------</pre><pre>{PRODUCTS_DETAILS} </pre><pre>&nbsp;</pre><pre>&nbsp;</pre><pre>------------------------------------------------------</pre><pre>{ORDER_TOTAL_DETAILS}</pre><pre>&nbsp;</pre><pre>&nbsp;</pre><pre>Delivery Address </pre><pre>------------------------------------------------------ </pre><pre>{DELIVERY_ADDRESS}  </pre><pre>&nbsp;</pre><pre>&nbsp;</pre><pre>Billing Address </pre><pre>------------------------------------------------------ </pre><pre>{BILLING_ADDRESS}  </pre><pre>&nbsp;</pre><pre>&nbsp;</pre><pre>Payment Method </pre><pre>------------------------------------------------------</pre><pre> {PAYMENT_METHOD}     </pre><pre>&nbsp;</pre></div>', '{ORDER_ID},{INVOICE_LINK},{ORDER_DATE},{PRODUCTS_DETAILS},{ORDER_TOTAL_DETAILS},{DELIVERY_ADDRESS},{BILLING_ADDRESS},{PAYMENT_METHOD}'),
-(3, 'EMAIL_TEMPLATE_PASSWORD_FORGOTTEN', 'Password Forgotten', '<pre>A new password was requested from {REQUESTED_IP}  Your new password to &#39;OBN/Kroll Demonstration Site&#39; is:    {NEW_PASSWORD} </pre>', '{FIRST_NAME},{LAST_NAME},{EMAIL},{NEW_PASSWORD},{REQUESTED_IP}');
+(1, 'EMAIL_TEMPLATE_SIGNUP', 'Sign Up Mail', '<p>Dear {TITLE} {FIRST_NAME} {LAST_NAME} ,</p><p>&nbsp;</p><p>We welcome you to&nbsp; <strong>{STORE_OWNER}</strong></p><p>&nbsp;</p><p>You can now take part in the <strong>various services </strong>we have to offer you. </p><p>Some of these services including: </p><ul><li><strong>Permanent Cart</strong> - Any products added to your online cart remain there until you remove them, or check them out. <br /></li><li><strong>Address Book</strong> - We can now deliver your products to another address other than yours! This is perfect to send birthday gifts direct to the birthday-person themselves.</li><li><strong>Order History</strong> - View your history of purchases that you have made with us.</li><li><strong>Products Reviews</strong> - Share your opinions on products with our other customers.</li></ul><br />For help with any of our online services, please email the store-owner: {STORE_OWNER_EMAIL}<br /><p>&nbsp;</p><p><strong>Note:</strong> This email address was given to us by one of our customers. If you did not signup to be a member, please send an email to {STORE_OWNER_EMAIL} . </p><p>&nbsp;</p><p>As part of our welcome to new customers, we have sent you an e-Gift Voucher worth {GIFT_VOUCHER_AMOUNT}</p><p>The redeem code for the e-Gift Voucher is {GIFT_VOUCHER}, you can enter the redeem code when checking out while making a purchase or by following this link {GIFT_VOUCHER_LINK}.</p><p>&nbsp;</p><p>Congratulations, to make your first visit to our online shop a more rewarding experience we are sending you an e-Discount Coupon.</p><p>Below are details of the Discount Coupon created just for you</p><p>&nbsp;{DISCOUNT_COUPON}</p><p>&nbsp;{DISCOUNT_COUPON_AMOUNT}</p><p>&nbsp;To use the coupon enter the redeem code which is {DISCOUNT_COUPON} during checkout while making a purchase</p><p>&nbsp; </p><h3>&nbsp;<strong>{STORE_OWNER}</strong></h3>', '{FIRST_NAME},{LAST_NAME},{DISCOUNT_COUPON},{GIFT_VOUCHER},{TITLE},{GIFT_VOUCHER_AMOUNT},{DISCOUNT_COUPON_AMOUNT},{STORE_NAME},{STORE_OWNER},{STORE_OWNER_EMAIL},{GIFT_VOUCHER_LINK}'),
+(2, 'EMAIL_TEMPLATE_ORDER_SUCCESS', 'Order Success Mail', '<div class="moz-text-plain" style="font-family: -moz-fixed; font-size: 14px"><pre>OBN/Kroll Demonstration Site</pre><pre>&nbsp;</pre><pre> ------------------------------------------------------ </pre><pre>Order Number: {ORDER_ID}</pre><pre>Detailed Invoice: {INVOICE_LINK}</pre><pre>Date Ordered: {ORDER_DATE} </pre><pre>&nbsp;</pre><pre>Products</pre><pre> ------------------------------------------------------</pre><pre>{PRODUCTS_DETAILS} </pre><pre>&nbsp;</pre><pre>&nbsp;</pre><pre>------------------------------------------------------</pre><pre>{ORDER_TOTAL_DETAILS}</pre><pre>&nbsp;</pre><pre>&nbsp;</pre><pre>Delivery Address </pre><pre>------------------------------------------------------ </pre><pre>{DELIVERY_ADDRESS}  </pre><pre>&nbsp;</pre><pre>&nbsp;</pre><pre>Billing Address </pre><pre>------------------------------------------------------ </pre><pre>{BILLING_ADDRESS}  </pre><pre>&nbsp;</pre><pre>&nbsp;</pre><pre>Payment Method </pre><pre>------------------------------------------------------</pre><pre> {PAYMENT_METHOD}     </pre><pre>&nbsp;</pre></div>', '{ORDER_ID},{INVOICE_LINK},{ORDER_DATE},{PRODUCTS_DETAILS},{ORDER_TOTAL_DETAILS},{DELIVERY_ADDRESS},{BILLING_ADDRESS},{PAYMENT_METHOD},{STORE_NAME},{STORE_OWNER},{STORE_OWNER_EMAIL}'),
+(3, 'EMAIL_TEMPLATE_PASSWORD_FORGOTTEN', 'Password Forgotten', '<pre>A new password was requested from {REQUESTED_IP}  Your new password to &#39;OBN/Kroll Demonstration Site&#39; is:    {NEW_PASSWORD} </pre>', '{FIRST_NAME},{LAST_NAME},{EMAIL},{NEW_PASSWORD},{REQUESTED_IP},{STORE_NAME},{STORE_OWNER},{STORE_OWNER_EMAIL}');
 
 CREATE TABLE IF NOT EXISTS `facebook_products` (
   `featured_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -26348,7 +26349,7 @@ CREATE TABLE IF NOT EXISTS `orders_products_attributes` (
   `orders_id` int(11) NOT NULL DEFAULT '0',
   `orders_products_id` int(11) NOT NULL DEFAULT '0',
   `products_options` varchar(32) NOT NULL DEFAULT '',
-  `products_options_values` varchar(32) NOT NULL DEFAULT '',
+  `products_options_values` varchar(255) NOT NULL DEFAULT '',
   `options_values_price` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `price_prefix` char(1) NOT NULL DEFAULT '',
   PRIMARY KEY (`orders_products_attributes_id`)
@@ -26468,8 +26469,8 @@ CREATE TABLE IF NOT EXISTS `price_updates` (
   `price_update_value` int(9) NOT NULL,
   `price_update_category` int(6) NOT NULL,
   `price_update_manufacturer` int(6) NOT NULL,
-  `price_update_select_query` varchar(256) NOT NULL,
-  `price_update_query` varchar(256) NOT NULL DEFAULT '',
+  `price_update_select_query` text NOT NULL,
+  `price_update_query` text NOT NULL,
   `price_update_roundoff` int(1) NOT NULL,
   `price_update_sort_order` int(4) NOT NULL,
   `customer_group_id` tinyint(4) DEFAULT NULL,
@@ -27534,6 +27535,23 @@ CREATE TABLE IF NOT EXISTS `header_tags_selection` (
   PRIMARY KEY (`header_tags_selection_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=83 ;
 
+CREATE TABLE IF NOT EXISTS `inventory_import_01` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date_added` datetime NOT NULL,
+  `comment` text,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `inventory_import_02` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `inventory_import_id` int(11) NOT NULL,
+  `products_model` varchar(32) NOT NULL,
+  `stock_level` int(11) NOT NULL,
+  `sort_order` int(11) DEFAULT NULL,
+  `previous_stock_level` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 CREATE TABLE IF NOT EXISTS `countries_off` (
   `countries_id` int(11) NOT NULL AUTO_INCREMENT,
   `countries_name` varchar(64) NOT NULL DEFAULT '',
@@ -27542,6 +27560,4 @@ CREATE TABLE IF NOT EXISTS `countries_off` (
   `address_format_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`countries_id`),
   KEY `IDX_COUNTRIES_NAME` (`countries_name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=240 ;
-
-ALTER TABLE `orders_products_attributes` CHANGE `products_options_values` `products_options_values` VARCHAR( 255 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '';
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

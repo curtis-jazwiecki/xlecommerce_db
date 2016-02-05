@@ -26813,6 +26813,8 @@ CREATE TABLE IF NOT EXISTS `qbi_config` (
   PRIMARY KEY (`qbi_config_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+INSERT INTO `qbi_config` (`qbi_config_id`, `qbi_config_ver`, `qbi_qb_ver`, `qbi_dl_iif`, `qbi_prod_rows`, `qbi_log`, `qbi_status_update`, `qbi_cc_status_select`, `qbi_mo_status_select`, `qbi_email_send`, `qbi_cc_clear`, `orders_status_import`, `orders_docnum`, `orders_ponum`, `cust_nameb`, `cust_namer`, `cust_limit`, `cust_type`, `cust_state`, `cust_country`, `cust_compcon`, `cust_phone`, `invoice_acct`, `invoice_salesacct`, `invoice_toprint`, `invoice_pmt`, `invoice_termscc`, `invoice_terms`, `invoice_rep`, `invoice_fob`, `invoice_comments`, `invoice_message`, `invoice_memo`, `item_acct`, `item_asset_acct`, `item_class`, `item_cog_acct`, `item_osc_lang`, `item_match_inv`, `item_match_noninv`, `item_match_serv`, `item_default`, `item_default_name`, `item_import_type`, `item_active`, `ship_acct`, `ship_name`, `ship_desc`, `ship_class`, `ship_tax`, `tax_on`, `tax_lookup`, `tax_name`, `tax_agency`, `tax_rate`, `pmts_memo`, `prods_sort`, `prods_width`, `qbi_config_active`, `qbi_config_added`) VALUES (NULL, '0.00', '2003', '1', '5', '0', '0', '1', '1', '0', '0', '1', '%I', '%I', '%C10W-%I', '%L10W-%I', '0', '', '1', '0', '1', '0', 'Accounts Receivable', 'Undeposited Funds', '1', '0', '', '', '', '', '1', '', '', '', 'Inventory Asset', '', 'Cost of Goods Sold', '0', '1', '0', '0', '0', '', '0', '0', '', '', '', '', '0', '0', '0', '', '', '0', '', '0', '48', '0', CURRENT_TIMESTAMP);
+
 CREATE TABLE IF NOT EXISTS `qbi_disc` (
   `qbi_disc_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `qbi_disc_refnum` int(10) unsigned NOT NULL DEFAULT '0',

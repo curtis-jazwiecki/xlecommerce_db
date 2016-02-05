@@ -414,7 +414,8 @@ INSERT INTO `admin_functionality_search` (`id`, `parent`, `name`, `keywords`, `f
 (133, 'Modules>Vendors Manager\r\n', 'Vendors Orders List', 'Vendors,Orders,List,modules,vendor,order', 'orders_by_vendor.php'),
 (144, 'Modules>Vendors Manager', 'Move Products Between Vendors', 'Modules,Vendors,Manager,move,products,between,vendor,product', 'move_vendor_prods.php'),
 (145, 'Modules', 'Product per Day Scheduler', 'Modules,Product,per,Day,Scheduler,products,days', 'product_per_day.php'),
-(147, 'Tools', 'eBay Feeds Manager', 'tools,tool,eBay,feed,Feeds,managers,Manager', 'eBay_feeds_manager.php');
+(147, 'Tools', 'eBay Feeds Manager', 'tools,tool,eBay,feed,Feeds,managers,Manager', 'eBay_feeds_manager.php'),
+(148, 'Tools', 'Language Manager', 'Tools,tool,language,Language Manager,managers', 'language_manager.php');
 
 CREATE TABLE IF NOT EXISTS `admin_groups` (
   `admin_groups_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -1209,7 +1210,9 @@ INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configu
 (1890, 'Tax Class', 'MODULE_SHIPPING_FLAT_TAX_CLASS', '0', 'Use the following tax class on the shipping fee.', 6, 0, NULL, '2015-03-25 07:34:33', 'tep_get_tax_class_title', 'tep_cfg_pull_down_tax_classes('),
 (1891, 'Shipping Zone', 'MODULE_SHIPPING_FLAT_ZONE', '0', 'If a zone is selected, only enable this shipping method for that zone.', 6, 0, NULL, '2015-03-25 07:34:33', 'tep_get_zone_class_title', 'tep_cfg_pull_down_zone_classes('),
 (1892, 'Sort Order', 'MODULE_SHIPPING_FLAT_SORT_ORDER', '0', 'Sort order of display.', 6, 0, NULL, '2015-03-25 07:34:33', NULL, NULL),
-(1966, 'Enable Force SSL', 'ENABLE_FORCE_SSL', 'True', 'Enable Force SSL', 1, 99999, '2015-12-10 02:10:10', '2015-12-09 00:00:00', NULL, 'tep_cfg_select_option(array(''True'', ''False''),');
+(1966, 'Enable Force SSL', 'ENABLE_FORCE_SSL', 'True', 'Enable Force SSL', 1, 99999, '2015-12-10 02:10:10', '2015-12-09 00:00:00', NULL, 'tep_cfg_select_option(array(''True'', ''False''),'),
+(1975, 'home page featured product', 'HOME_PAGE_FEATURED_PRODUCT', '<div class="col-md-3 Featured_products">\r\n  <div class="panel_new panel-default_new"><a href="featured_products.php" class="collection_product">\r\n    <div class="panel-heading-collection">\r\n      <p class="h1 collection_title">Featured products</p>\r\n      <p class="collection_detail">View all</p>\r\n    </div>\r\n    <div class="panel-body-Featured-products-img" style="height: 367px;max-width: 310px;width:100%;"><img class="img-responsive img-portfolio img-hover" src="/includes/sts_templates/full/template2/images/products2.png" alt=""></div>\r\n    </a></div>\r\n</div>', 'home page featured product', 4, 10000, '2016-01-06 03:29:27', '2016-01-04 00:00:00', NULL, 'tep_cfg_textarea('),
+(1976, 'home page featured manufacturer', 'HOME_PAGE_FEATURED_MANUFACTURER', '<div class="col-md-3 Featured_manufacturers">\r\n  <div class="panel_new panel-default_new"><a href="featured_manufacturers.php" class="collection_product">\r\n    <div class="panel-heading-collection">\r\n      <p class="h1 collection_title">Featured manufacturers</p>\r\n      <p class="collection_detail">View all</p>\r\n    </div>\r\n    <div class="panel-body-manufacturers-img" style="height: 367px;max-width: 310px;width:100%;"><img class="img-responsive img-portfolio img-hover" src="/includes/sts_templates/full/template2/images/feature_manufacturer.png" alt=""></div>\r\n    </a></div>\r\n</div>', 'home page featured manufacturer', 4, 100001, '2016-01-06 03:29:48', '2016-01-04 00:00:00', NULL, 'tep_cfg_textarea(');
 
 CREATE TABLE IF NOT EXISTS `configuration_group` (
   `configuration_group_id` int(11) NOT NULL AUTO_INCREMENT,

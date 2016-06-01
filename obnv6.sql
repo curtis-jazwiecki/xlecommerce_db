@@ -26542,6 +26542,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `vendors_prod_comments` text,
   `products_ship_price` decimal(15,2) NOT NULL DEFAULT '0.00',
   `lock_status` enum('0','1') NOT NULL DEFAULT '0',
+  `item_listed_on_ebay` enum( '0', '1' ) NOT NULL DEFAULT '0',
   PRIMARY KEY (`products_id`),
   KEY `idx_products_date_added` (`products_date_added`),
   KEY `products_model` (`products_model`),
@@ -27569,3 +27570,217 @@ CREATE TABLE IF NOT EXISTS `countries_off` (
 
 INSERT INTO `information` (`information_id`, `information_group_id`, `information_title`, `information_meta_title`, `information_description`, `information_meta_tag`, `information_meta_tag_keywords`, `parent_id`, `sort_order`, `visible`, `language_id`, `is_hidden`) VALUES
 (124, 1, 'Point Program FAQ', '', '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<table border="0" cellpadding="0" cellspacing="0" style="width:100%">\r\n				<tbody>\r\n					<tr>\r\n						<td>Reward Point Program FAQ</td>\r\n						<td><img alt="Reward Point Program FAQ" src="images/money.gif" style="height:40px; width:57px" title=" Reward Point Program FAQ " /></td>\r\n					</tr>\r\n				</tbody>\r\n			</table>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td><a name="Top"></a><strong>Please choose from one of the topics below:</strong>\r\n			<ol>\r\n				<li><a href="javascript:show(''answer_q1'');">What is the Reward Point Program?</a>\r\n				<div id="answer_q1">To thank you all for your support and to offer future incentives to you we wanted to give something back, this is why we have launched this great Reward Point Program.<br />\r\n				<br />\r\n				Our Reward Point Program is as simple as it sounds. While shopping at OBN/Kroll Demonstration Site you will earn Shopping Points for the money you spend.<br />\r\n				Once earned, you&#39;ll be able to use those points to pay for future purchases at OBN/Kroll Demonstration Site.<br />\r\n				<br />\r\n				The Reward Point Program began on February 25, 2016 . All purchases made after that date will earn points.</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q2'');">How does the Program work?</a>\r\n				<div id="answer_q2">When an order is placed, the total amount<small>*</small> of the order will be used to calculate the amount of points earned. These points are added to your Shopping Points account as pending points.<br />\r\n				All pending points are listed in your <a href="my_points.php"> <u>Shopping Points account </u></a> and will stay there until approved/confirmed by OBN/Kroll Demonstration Site.<br />\r\n				<br />\r\n				Once any pending points have been approved, they will be released and your account will be credited with the value of those points. Ready for you to spend on whatever you want.<br />\r\n				<br />\r\n				You must login to your account in order to view the status of your points.<br />\r\n				<br />\r\n				During the checkout procces you&#39;ll be able to pay for your order with your points balance.\r\n				<p>* in most cases shipping fees and taxes excluded. See refered FAQ for more details.</p>\r\n				</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q3'');">Points and Values</a>\r\n				<div id="answer_q3">Currently, for every $1.00 spent at OBN/Kroll Demonstration Site you&#39;ll earn 1<br />\r\n				For example:<br />\r\n				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Product Cost:</strong>&nbsp; $100.00<br />\r\n				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Value of Points Earned:</strong>&nbsp; $1.00<br />\r\n				<br />\r\n				Please note, we reserve the right to make changes to the above rate at any time without prior notice. The rate shown here will always be current.\r\n				<p><small>Last updated: February 25, 2016</small></p>\r\n\r\n				<p>&nbsp;</p>\r\n				</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q4'');">Redeeming Shopping Points</a>\r\n				<div id="answer_q4">If you have a balance in your Shopping Points Account, you can use those points to pay for purchases made at OBN/Kroll Demonstration Site.<br />\r\n				During the checkout proccess, on the same page that you select a payment method, there will be a box to enter the amount of points you wish to redeem. Enter the amount of points you would like to spend or tick the box to use all available points. Please note, you will still have to select another payment method if there is not enough in your Shopping Points Account to cover the cost of your purchase.<br />\r\n				Continue the checkout procedure and at the confirmation page you&#39;ll notice that the value of the points redeemed will have been credited towards your order. Once you confirm your order, your Shopping Points account will be updated and the points used deducted from your balance.<br />\r\n				Note that any purchase made by redeeming points will only be rewarded with additional points for the amount spent other then points.</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q5'');">Minimum Points Required</a>\r\n				<div id="answer_q5">Currently, no minimum balance is required to redeem your points. Please note, you&#39;ll still have to select another payment method if there isn&#39;t enough in your Shopping Points account to cover the cost of your purchase.<br />\r\n				<br />\r\n				We strongly advise you to check this page often as we may make changes to this policy.\r\n				<p><small>Last updated: March 05, 2014</small></p>\r\n				</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q6'');">Minimum Purchase Amount Required</a>\r\n				<div id="answer_q6">Currently, no Minimum Purchase Amount required to redeem your points.<br />\r\n				<br />\r\n				We strongly advise you to check this page often as we may make changes to this policy.\r\n				<p><small>Last updated: March 05, 2014</small></p>\r\n				</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q7'');">Maximum Points Redemptions allowed per order</a>\r\n				<div id="answer_q7">A maximum of <strong>1,000</strong> points <strong>($10.00)</strong> is allowed to redeem per order.<br />\r\n				<br />\r\n				We strongly advise you to check this page often as we may make changes to this policy.\r\n				<p><small>Last updated: March 05, 2014</small></p>\r\n				</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q8'');">Will I earn points for shipping fees?</a>\r\n				<div id="answer_q8">No. When calculating the amount of points earned, the shipping fees are excluded.\r\n				<p><small>Last updated February 25, 2016</small></p>\r\n				</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q9'');">Will I earn points for tax fees?</a>\r\n				<div id="answer_q9">No. When calculating the amount of points earned, the taxes are excluded.<br />\r\n				<br />\r\n				We strongly advise you to check this page often as we may make changes to this policy.\r\n				<p><small>Last updated: March 05, 2014</small></p>\r\n				</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q10'');">Will I earn points for discounted products?</a>\r\n				<div id="answer_q10">No. When calculating the amount of points earned, all items which have been discounted are excluded.<br />\r\n				<br />\r\n				We strongly advise you to check this page often as we may make changes to this policy.\r\n				<p><small>Last updated: February 25, 2016</small></p>\r\n				</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q11'');">Will I earn points when purchases paid with points?</a>\r\n				<div id="answer_q11">No. When calculating the amount of points earned. Any purchase made by redeeming points are excluded.<br />\r\n				<br />\r\n				We strongly advise you to check this page often as we may make changes to this policy.\r\n				<p><small>Last updated: February 25, 2016</small></p>\r\n				</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q12'');">Earning Referral Points</a>\r\n				<div id="answer_q12"><em>&quot;Word-of-mouth&quot; advertising is the most powerful form of advertising there is.</em><br />\r\n				Referral Points is based on the idea that we should both benefit from your referrals.<br />\r\n				When referred friend place an order, during the checkout procces on the same page that you select a payment method there will be a box to enter a Referral code . Your Referral code is your registered email address with us.<br />\r\n				When we receive your referred friends completed and approved order, we will reward your Points account with <strong>150</strong> points .<br />\r\n				The more first time orders we receive from your referrals, the more reward points you will receive.\r\n				<p><small>Last updated: February 25, 2016</small></p>\r\n				</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q13'');">Earning Points While writing a Products Review</a>\r\n				<div id="answer_q13"><em>&quot;Writing Review is ego boost knowing others read your opinions, and maybe even take your advice.&quot;</em><br />\r\n				Sharing Your Product Reviews will assist us to continually improve our offers and service to you as well as helps others to choose the right products.<br />\r\n				We would like to thank you for helpful review that you gave us, therefore for every quality review, we will reward your Points account with <strong>$0.01</strong> worth of points .<br />\r\n				Your Review must meet all of the following conditions:\r\n				<ul>\r\n					<li>Your Reviews must be original.</li>\r\n					<li>Reviews must be focused and concise on the product under review.</li>\r\n					<li>Reviews should not duplicate content already published.</li>\r\n					<li>Be truthful and objective.</li>\r\n					<li>Reviews should not include posts that have spam, commercial or advertising content or links.</li>\r\n					<li>Reviews should not abuse, harass, or threaten another&#39;s personal safety .</li>\r\n				</ul>\r\n				OBN/Kroll Demonstration Site reserves the right to refuse or remove any review that does not comply with above conditions.<br />\r\n				OBN/Kroll Demonstration Site staff reserves the right to correct misspelled words, grammatical errors.<br />\r\n				OBN/Kroll Demonstration Site is not responsible or liable in any way for ratings and reviews posted by its customers.\r\n				<p><small>Last updated: January 08, 2015</small></p>\r\n				</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q14'');">Products Restrictions</a>\r\n				<div id="answer_q14">Currently, no restrictions apply to what items may be purchased using your points balance.<br />\r\n				<br />\r\n				We strongly advise you to check this page often as we may make changes to this policy.\r\n				<p><small>Last updated: March 05, 2014</small></p>\r\n				</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q15'');">Products on sale Restrictions</a>\r\n				<div id="answer_q15">Currently, no restrictions apply to the kind of items which may be purchased using your points balance.<br />\r\n				<br />\r\n				We strongly advise you to check this page often as we may make changes to this policy.\r\n				<p><small>Last updated: March 05, 2014</small></p>\r\n				</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q16'');">Conditions of Use</a>\r\n				<div id="answer_q16">\r\n				<ul>\r\n					<li>Shopping Points are only available to registered OBN/Kroll Demonstration Site member&#39;s.</li>\r\n					<li>Shopping Points Reward can only be collected and used with online purchases. and are only validated at OBN/Kroll Demonstration Site.</li>\r\n					<li>Points are non-refundable and can&#39;t be transferred between member&#39;s.</li>\r\n					<li>Shopping Points are non-transferable or exchangeable for cash under any circumstances.</li>\r\n					<li>Shopping Points will not be refunded for any cancelled order.</li>\r\n					<li>When buying with Points,you will still have to select another payment method if there is not enough in your Shopping Points Account to cover the cost of your purchase.</li>\r\n					<li>When calculating the amount of points earned. shipping fees and taxes are excluded(unless other.see refered FAQ for more details).</li>\r\n				</ul>\r\n				Please note, we reserve the right to make changes to this policy at any time without prior notice or liability.</div>\r\n				</li>\r\n				<li><a href="javascript:show(''answer_q17'');">When Problems Occur</a>\r\n				<div id="answer_q17">For any queries regarding our Reward Point Program, please <a href="contact_us.php"> <u>contact us </u></a>. Make sure you provide as much information as possible in the e-mail.</div>\r\n				</li>\r\n			</ol>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td><img alt="" src="images/pixel_trans.gif" style="height:10px; width:100%" /></td>\r\n		</tr>\r\n	</tbody>\r\n</table>', '', '', 0, 50, '1', 1, '0');
+
+
+
+INSERT INTO `products_bundles` (`bundle_id`, `subproduct_id`, `subproduct_qty`) VALUES
+(16, 28, 1),
+(16, 27, 1),
+(16, 25, 1),
+(16, 23, 1),
+(16, 21, 1),
+(16, 20, 1),
+(16, 18, 1),
+(16, 17, 1),
+(16, 15, 1),
+(16, 5, 1),
+(16, 3, 1),
+(16, 2, 1),
+(29, 28, 1),
+(29, 27, 1),
+(29, 25, 1),
+(29, 23, 1),
+(29, 21, 1),
+(29, 20, 1),
+(29, 18, 1),
+(29, 17, 1),
+(29, 15, 1),
+(29, 5, 1),
+(29, 3, 1),
+(29, 2, 1),
+(30, 28, 1),
+(30, 27, 1),
+(30, 25, 1),
+(30, 22, 1),
+(30, 21, 1),
+(30, 20, 1),
+(30, 18, 1),
+(30, 17, 1),
+(30, 15, 1),
+(30, 5, 1),
+(30, 3, 1),
+(30, 2, 1),
+(31, 28, 1),
+(31, 27, 1),
+(31, 24, 1),
+(31, 22, 1),
+(31, 21, 1),
+(31, 19, 1),
+(31, 18, 1),
+(31, 17, 1),
+(31, 15, 1),
+(31, 3, 1),
+(31, 2, 1);
+
+--
+-- Dumping data for table `products_description`
+--
+
+INSERT INTO `products_description` (`products_id`, `language_id`, `products_name`, `products_description`, `products_url`, `products_head_title_tag`, `products_head_desc_tag`, `products_head_keywords_tag`, `products_viewed`, `products_specifications`, `products_tags`) VALUES
+(1, 1, 'Test Apparel Product', '<p>This is where you can add a discription about this product, why it is useful, and any relevent specs that might influence your customer&#39;s decision to buy this product. </p><p>&nbsp;Example:&nbsp; This is the training T-shirt that started the &quot;performance&quot; revolution-quick-drying &amp; insanely comfortable.              </p><p>&nbsp; </p>', '', 'Test Apparel Product', 'Test Apparel Product', 'Test Apparel Product', 41, '', 'Your, Keywords, Show, Search, Engines, What, A, Product, Is,'),
+(2, 1, 'BRO Black Rain Ordnance Bolt Carrier Group BCG (Test Part 3)', '<span style="color: #333333; font-family: Georgia, ''Bitstream Charter'', serif; font-size: 16px; line-height: 24px">Chuck in nostrud alcatra fugiat pork nulla shankle tempor labore ham quis ea rump adipisicing. Short ribs aliqua ipsum, culpa sirloin swine andouille ex leberkas in ball tip capicola. Landjaeger sed eu, chuck boudin voluptate flank. Porchetta kielbasa dolor capicola elit doner andouille veniam cillum. Aute tempor ea turkey, dolore tenderloin tongue beef ribs alcatra chicken laboris adipisicing. Turducken boudin ham hock picanha. Minim dolore sirloin laboris hamburger capicola adipisicing in alcatra ball tip.</span>', '', 'BRO Black Rain Ordnance Bolt Carrier Group BCG (Test Part 3)', 'BRO Black Rain Ordnance Bolt Carrier Group BCG (Test Part 3)', 'BRO Black Rain Ordnance Bolt Carrier Group BCG (Test Part 3)', 38, '', 'BRO Black Rain Ordnance Bolt Carrier Group BCG (Test Part 3)'),
+(3, 1, 'Charging Handle (Test Part 2)', '', '', 'Charging Handle', 'Charging Handle', 'Charging Handle', 23, '', 'Charging Handle'),
+(5, 1, 'A2 Style Flashhider (Test Part 1)', 'Bacon ipsum dolor amet tri-tip ball tip landjaeger jerky rump pork picanha sausage tongue corned beef tenderloin shoulder. Pork belly beef ribs strip steak shoulder landjaeger short ribs andouille hamburger. Pork loin bacon tail ribeye, tongue swine tenderloin leberkas shankle porchetta turkey shoulder ground round. Chicken pork chop t-bone capicola salami frankfurter short ribs. Pork chop sirloin turkey, ham cow ham hock pancetta prosciutto drumstick salami short loin corned beef.', '', 'A2 Style Flashhider', 'A2 Style Flashhider', 'A2 Style Flashhider', 25, '', 'A2 Style Flashhider'),
+(6, 1, 'Test Firearm Builder (Package)', '<p>The ablity to create package products will allow you to offer a group of SKUs which can be sold as a single product.</p><p>&nbsp;</p><p>Spare ribs jerky drumstick, prosciutto venison meatloaf sausage leberkas andouille pig. Beef ribs alcatra leberkas biltong andouille ball tip, pork swine tongue. Pork belly hamburger sirloin meatloaf t-bone, short ribs filet mignon salami jerky rump picanha chuck pork loin tri-tip short loin. Ham bacon flank beef cupim, prosciutto ball tip pork chop turducken jowl ribeye brisket. Alcatra jerky swine, pork chop salami venison pastrami beef ribs porchetta kielbasa fatback leberkas pancetta filet mignon tongue. Kielbasa kevin strip steak, leberkas boudin ball tip andouille pork chop ground round beef cupim pig beef ribs chuck. Tongue chicken andouille corned beef venison sausage salami shankle ribeye pig turkey kevin.&nbsp;</p>', '', 'Test Firearm Builder (Package)', 'Test Firearm Builder (Package)', 'Test Firearm Builder (Package)', 43, '', 'Test Firearm Builder (Package)'),
+(7, 1, 'Test Class', 'This is an example of a virutal eCommerce product. You can describe this class or service that you offer here to let customers know what this product is.', '', 'Test Class', 'Test Class', 'Test Class', 19, '', 'Test Class'),
+(8, 1, 'Test Holster (Parent/Child)', '<p><font face="arial, helvetica, sans-serif" size="2">This is where you can discribe your product model.&nbsp;<br /><br /></font></p><p><font face="arial, helvetica, sans-serif" size="2"><span style="color: #333333; line-height: 24px">Dolore ground round consectetur est. Venison tail et fugiat reprehenderit picanha brisket pork loin exercitation shank laboris voluptate biltong consectetur nisi. Adipisicing turducken do sunt nulla spare ribs. Est tongue ipsum beef pork chop. Ut in kevin ex, nostrud tempor ullamco mollit spare ribs. Consequat shoulder alcatra capicola. Tail sed rump excepteur, esse andouille aliquip eu nulla ground round pork belly short loin spare ribs ham officia.</span>&nbsp;</font></p>', '', 'Test Holster (Product Options)', 'Test Holster (Product Options)', 'Test Holster (Product Options)', 24, '', 'Test Holster (Product Options)'),
+(9, 1, 'Test Holster Black Right', '', '', 'Test Holster Black Right', 'Test Holster Black Right', 'Test Holster Black Right', 0, '', 'Test Holster Black Right'),
+(10, 1, 'Test Holster Black Left', '', '', 'Test Holster Black Left', 'Test Holster Black Left', 'Test Holster Black Left', 0, '', 'Test Holster Black Left'),
+(11, 1, 'Test Holster Brown Right', '', '', 'Test Holster Brown Right', 'Test Holster Brown Right', 'Test Holster Brown Right', 0, '', 'Test Holster Brown Right'),
+(12, 1, 'Test Holster Brown Left', '', '', 'Test Holster Brown Left', 'Test Holster Brown Left', 'Test Holster Brown Left', 0, '', 'Test Holster Brown Left'),
+(13, 1, 'CCW Class 1', 'Purchase this class and be a enrolled student of the firearms safety course, put on by our experts.', '', 'CCW Class 1', 'CCW Class 1', 'CCW Class 1', 0, '', 'CCW Class 1'),
+(14, 1, 'Firearms Safety Class', 'Purchase this class and be a enrolled student of the firearms safety course, put on by our experts.', '', 'Firearms Safety Class', 'Firearms Safety Class', 'Firearms Safety Class', 0, '', 'Firearms Safety Class'),
+(15, 1, 'Stripped Lower (test part 4)', '<p>This item will be available both through a package and by itself.&nbsp;</p><p><span style="font-family: Arial, Helvetica, sans; font-size: 11px; line-height: 14px; text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nisl nisl, ultricies vel turpis ac, maximus ultricies velit. Nulla efficitur nisl id neque suscipit, convallis tempus tellus egestas. Nunc convallis nulla vitae libero pretium commodo. Suspendisse tempor blandit enim. Sed scelerisque quis erat a blandit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean pellentesque nunc ante, sit amet sodales sem tempus sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</span>&nbsp;</p>', '', 'Stripped Lower (test part 4)', 'Stripped Lower (test part 4)', 'Stripped Lower (test part 4)', 3, '', 'Stripped Lower (test part 4)'),
+(16, 1, 'Product Package 1 (16" stainless barrel, a2 stock)', 'This text will not display as this is a child product', '', 'Product Package 1 (16" stainless barrel, low-pro gasblock flat top upper with a2', 'Product Package 1 (16" stainless barrel, low-pro gasblock flat top upper with a2 stock)', 'Product Package 1 (16" stainless barrel, low-pro gasblock flat top upper with a2 stock)', 0, '', 'Product Package 1 (16" stainless barrel, low-pro gasblock flat top upper with a2 stock)'),
+(17, 1, 'Gas Tube (test product 5)', 'This will display when the product is selected. This product is part of a package as well.&nbsp;', '', 'Gas Tube (test product 5)', 'Gas Tube (test product 5)', 'Gas Tube (test product 5)', 5, '', 'Gas Tube (test product 5)'),
+(18, 1, 'Flat Top Upper (test product 6)', 'This product is part of a package but it will still be available individually.&nbsp;', '', 'Flat Top Upper (test product 6)', 'Flat Top Upper (test product 6)', 'Flat Top Upper (test product 6)', 4, '', 'Flat Top Upper (test product 6)'),
+(19, 1, 'Stainless 16.1 inch barrel (Test Product 7)', 'This is an example of one of the two barrel options in the firearm builder. Just like all options in the firearm builder, this option will be available either as part of the package or through individual sale.&nbsp;', '', 'Test Product 7 (Stainless 16.1 inch barrel)', 'Test Product 7 (Stainless 16.1 inch barrel)', 'Test Product 7 (Stainless 16.1 inch barrel)', 6, '', 'Test Product 7 (Stainless 16.1 inch barrel)'),
+(20, 1, 'chrome lined 16.1 inch barrel (test product 8)', 'This is another example of an option in the firearm builder.&nbsp;', '', 'chrome lined 16.1 inch barrel (test product 8)', 'chrome lined 16.1 inch barrel (test product 8)', 'chrome lined 16.1 inch barrel (test product 8)', 7, '', 'chrome lined 16.1 inch barrel (test product 8)'),
+(21, 1, 'barrel nut (Test Product 9)', 'A part of the firearm builder which will be available for individual sale.&nbsp;', '', 'Test Product 9 (barrel nut)', 'Test Product 9 (barrel nut)', 'Test Product 9 (barrel nut)', 5, '', 'Test Product 9 (barrel nut)'),
+(22, 1, 'low pro gas block (Test Product 10)', 'One of two options. Gas block.&nbsp;', '', 'Test Product 10 (low pro gas block)', 'Test Product 10 (low pro gas block)', 'Test Product 10 (low pro gas block)', 11, '', 'Test Product 10 (low pro gas block)'),
+(23, 1, 'A2 Front sight gas block (obn test product 11)', 'gas block option 2', '', 'A2 Front sight gas block (obn test product 11)', 'A2 Front sight gas block (obn test product 11)', 'A2 Front sight gas block (obn test product 11)', 4, '', 'A2 Front sight gas block (obn test product 11)'),
+(24, 1, 'Smooth Freefloat (obn test product 12)', 'Another of two options', '', 'Smooth Freefloat (obn test product 12)', 'Smooth Freefloat (obn test product 12)', 'Smooth Freefloat (obn test product 12)', 23, '', 'Smooth Freefloat (obn test product 12)'),
+(25, 1, 'Quad Rail Free float(obn test product 13)', 'rail option', '', 'Quad Rail Free float(obn test product 13)', 'Quad Rail Free float(obn test product 13)', 'Quad Rail Free float(obn test product 13)', 5, '', 'Quad Rail Free float(obn test product 13)'),
+(26, 1, 'A2 Buttstock (OBN Test product 14)', 'Buttstock options....', '', 'A2 Buttstock (OBN Test product 14)', 'A2 Buttstock (OBN Test product 14)', 'A2 Buttstock (OBN Test product 14)', 7, '', 'A2 Buttstock (OBN Test product 14)'),
+(27, 1, '6 position stock (OBN Test product 15)', 'A second option for the buttstock', '', '6 position stock (OBN Test product 15)', '6 position stock (OBN Test product 15)', '6 position stock (OBN Test product 15)', 12, '', '6 position stock (OBN Test product 15)'),
+(28, 1, 'Lower parts kit (obn test product 16)', 'Parts to complete the stipped lower', '', 'Lower parts kit (obn test product 16)', 'Lower parts kit (obn test product 16)', 'Lower parts kit (obn test product 16)', 4, '', 'Lower parts kit (obn test product 16)'),
+(29, 1, 'Product Package 2 (16" chrome lined barrel, 6 position stock)', 'This text will not show up. This is a child product.&nbsp;', '', 'Product Package 1 (16" stainless barrel, low-pro gasblock flat top upper with a2', 'Product Package 1 (16" stainless barrel, low-pro gasblock flat top upper with a2 stock)', 'Product Package 1 (16" stainless barrel, low-pro gasblock flat top upper with a2 stock)', 0, '', 'Product Package 1 (16" stainless barrel, low-pro gasblock flat top upper with a2 stock)'),
+(30, 1, 'Product Package 3 (16" chrome lined barrel, with A2 buttstock)', '', '', 'Product Package 3 (16" chrome lined barrel, upper with 6 position, smooth free f', 'Product Package 3 (16" chrome lined barrel, upper with 6 position, smooth free float)', 'Product Package 3 (16" chrome lined barrel, upper with 6 position, smooth free float)', 0, '', 'Product Package 3 (16" chrome lined barrel, upper with 6 position, smooth free float)'),
+(31, 1, 'Product Package 4 (16" Stainless barrel, 6 position stock)', '', '', 'Product Package 2 (16" Stainless barrel, 6 position stock)', 'Product Package 2 (16" Stainless barrel, 6 position stock)', 'Product Package 2 (16" Stainless barrel, 6 position stock)', 0, '', 'Product Package 2 (16" Stainless barrel, 6 position stock)');
+
+--
+-- Dumping data for table `products_extended`
+--
+
+INSERT INTO `products_extended` (`desc_short`, `upc_ean`, `unit_cost`, `unit_cost_cur`, `unit_msrp`, `unit_msrp_cur`, `vendor_sku`, `fulfiller`, `prod_id`, `min_acceptable_price`, `sales_price`, `brand_name`, `osc_products_id`, `xml_feed_id`, `categories_id`, `date_added`, `last_modified`) VALUES
+(NULL, '11156', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 1, 0, NULL, '2016-02-05 14:52:31', '2016-02-05 14:52:31'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 2, 0, NULL, '2016-02-05 15:00:00', '2016-02-05 15:00:00'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 3, 0, NULL, '2016-02-05 15:01:34', '2016-02-05 15:01:34'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 5, 0, NULL, '2016-02-05 15:04:20', '2016-02-05 15:04:20'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 6, 0, NULL, '2016-02-05 15:07:23', '2016-02-05 15:07:23'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 7, 0, NULL, '2016-02-12 14:47:09', '2016-02-12 14:47:09'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 8, 0, NULL, '2016-02-18 17:14:50', '2016-02-18 17:14:50'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 9, 0, NULL, '2016-02-18 17:15:48', '2016-02-18 17:15:48'),
+(NULL, 'TestHolster_LeftBlack', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 10, 0, NULL, '2016-02-18 17:17:36', '2016-02-18 17:17:36'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 11, 0, NULL, '2016-02-18 17:18:27', '2016-02-18 17:18:27'),
+(NULL, 'TestHolster_LeftBrown', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 12, 0, NULL, '2016-02-18 17:19:22', '2016-02-18 17:19:22'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 13, 0, NULL, '2016-03-17 13:55:14', '2016-03-17 13:55:14'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 14, 0, NULL, '2016-03-17 13:56:18', '2016-03-17 13:56:18'),
+(NULL, 'obn-test4', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 15, 0, NULL, '2016-03-29 14:26:52', '2016-03-29 14:26:52'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 16, 0, NULL, '2016-03-29 14:32:58', '2016-03-29 14:32:58'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 17, 0, NULL, '2016-03-29 14:43:38', '2016-03-29 14:43:38'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 18, 0, NULL, '2016-03-29 14:45:52', '2016-03-29 14:45:52'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 19, 0, NULL, '2016-03-29 14:59:23', '2016-03-29 14:59:23'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 20, 0, NULL, '2016-03-29 15:01:32', '2016-03-29 15:01:32'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 21, 0, NULL, '2016-03-29 15:04:23', '2016-03-29 15:04:23'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 22, 0, NULL, '2016-03-29 15:09:25', '2016-03-29 15:09:25'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 23, 0, NULL, '2016-03-29 15:11:43', '2016-03-29 15:11:43'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 24, 0, NULL, '2016-03-29 15:13:47', '2016-03-29 15:13:47'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 25, 0, NULL, '2016-03-29 15:16:38', '2016-03-29 15:16:38'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 26, 0, NULL, '2016-03-29 15:20:33', '2016-03-29 15:20:33'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 27, 0, NULL, '2016-03-29 15:22:55', '2016-03-29 15:22:55'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 28, 0, NULL, '2016-03-29 15:25:16', '2016-03-29 15:25:16'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 29, 0, NULL, '2016-03-29 15:27:29', '2016-03-29 15:27:29'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 30, 0, NULL, '2016-03-29 16:02:02', '2016-03-29 16:02:02'),
+(NULL, '', 0, NULL, 0, NULL, NULL, NULL, NULL, 0, NULL, '', 31, 0, NULL, '2016-03-29 16:21:32', '2016-03-29 16:21:32');
+
+--
+-- Dumping data for table `products_options`
+--
+
+INSERT INTO `products_options` (`products_options_id`, `language_id`, `products_options_name`, `is_xml_feed_option`, `products_options_sort_order`) VALUES
+(1, 1, 'Color', '0', 0),
+(2, 1, 'Handedness', '0', 0),
+(3, 1, 'Leather', '0', 0),
+(4, 1, 'Class Level', '0', 0),
+(5, 1, 'Barrel Type', '0', 0),
+(6, 1, 'Free Float', '0', 0),
+(7, 1, 'Buttstock', '0', 0);
+
+--
+-- Dumping data for table `products_options_values`
+--
+
+INSERT INTO `products_options_values` (`products_options_values_id`, `language_id`, `products_options_values_name`) VALUES
+(1, 1, 'Red'),
+(2, 1, 'Blue'),
+(3, 1, 'Yellow'),
+(4, 1, 'Right'),
+(5, 1, 'Left'),
+(6, 1, 'Black'),
+(7, 1, 'Brown'),
+(8, 1, 'CCW Class'),
+(9, 1, 'Firearms Safety'),
+(10, 1, 'Stainless'),
+(11, 1, 'Quad Rail'),
+(12, 1, 'Smooth'),
+(13, 1, 'A2'),
+(14, 1, '6 Position'),
+(15, 1, 'Chrome Lined');
+
+--
+-- Dumping data for table `products_options_values_to_products_options`
+--
+
+INSERT INTO `products_options_values_to_products_options` (`products_options_values_to_products_options_id`, `products_options_id`, `products_options_values_id`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 2, 4),
+(5, 2, 5),
+(6, 3, 6),
+(7, 3, 7),
+(8, 4, 8),
+(9, 4, 9),
+(10, 5, 10),
+(11, 6, 11),
+(12, 6, 12),
+(13, 7, 13),
+(14, 7, 14),
+(15, 5, 15);
+
+--
+-- Dumping data for table `products_to_categories`
+--
+
+INSERT INTO `products_to_categories` (`products_id`, `categories_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1),
+(13, 1),
+(14, 1),
+(15, 1),
+(16, 1),
+(17, 1),
+(18, 1),
+(19, 1),
+(20, 1),
+(21, 1),
+(22, 1),
+(23, 1),
+(24, 1),
+(25, 1),
+(26, 1),
+(27, 1),
+(28, 1),
+(29, 1),
+(30, 1),
+(31, 1);

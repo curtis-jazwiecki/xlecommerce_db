@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `address_book` (
   `entry_state` varchar(32) DEFAULT NULL,
   `entry_country_id` int(11) NOT NULL DEFAULT '0',
   `entry_zone_id` int(11) NOT NULL DEFAULT '0',
+  `is_ffl_address` INT( 2 ) NOT NULL DEFAULT '0' COMMENT '0 = not commited, 1 = commited',
   PRIMARY KEY (`address_book_id`),
   KEY `idx_address_book_customers_id` (`customers_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -628,6 +629,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `google_category_id` int(11) DEFAULT NULL,
   `google_category_path` varchar(256) DEFAULT NULL,
   `amazon_category_id` int(11) NOT NULL default '0',
+  `avalara_tax_code` VARCHAR( 255 ) NOT NULL,
   PRIMARY KEY (`categories_id`),
   KEY `idx_categories_parent_id` (`parent_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -1642,6 +1644,7 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `customers_ip_address` varchar(32) DEFAULT NULL,
   `customers_shopping_points` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `customers_points_expires` date DEFAULT NULL,
+  `is_tax_exempt` TINYINT( 2 ) NOT NULL DEFAULT '0' COMMENT '0 = "non  tax exempt", 1 = "tax exempt"',
   PRIMARY KEY (`customers_id`),
   KEY `customers_nickname` (`customers_nickname`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -26329,6 +26332,9 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `shipping_module` varchar(255) DEFAULT NULL,
   `pos` int(11) NOT NULL,
   `ip_address` varchar(16) DEFAULT NULL,
+  `avalara_data` TEXT NOT NULL,
+  `avalara_tax_commited` TINYINT( 2 ) NOT NULL DEFAULT '0' COMMENT '0 = not commited, 1 = commited',
+  `parent_orders_id` INT( 11 ) NOT NULL DEFAULT '0',
   PRIMARY KEY (`orders_id`),
   KEY `qbi_imported` (`qbi_imported`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -26345,6 +26351,8 @@ CREATE TABLE IF NOT EXISTS `orders_products` (
   `products_quantity` int(2) NOT NULL DEFAULT '0',
   `is_ok_for_shipping` enum('0','1') NOT NULL DEFAULT '1',
   `vendors_id` int(11) NOT NULL DEFAULT '1',
+  `sq` INT( 11 ) NOT NULL DEFAULT '0' COMMENT 'sq = store_quantity',
+  `wq` INT( 11 ) NOT NULL DEFAULT '0' COMMENT 'wq = products_quantity',
   PRIMARY KEY (`orders_products_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -26389,6 +26397,7 @@ CREATE TABLE IF NOT EXISTS `orders_shipping` (
   `dhl_track_num2` varchar(40) DEFAULT NULL,
   `extra_track_num` varchar(40) DEFAULT NULL,
   `extra_track_num2` varchar(40) DEFAULT NULL,
+  `ffl_licensee` varchar( 255 ) NOT NULL DEFAULT '0',
   PRIMARY KEY (`orders_shipping_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -26484,7 +26493,7 @@ CREATE TABLE IF NOT EXISTS `price_updates` (
 CREATE TABLE IF NOT EXISTS `products` (
   `products_id` int(11) NOT NULL AUTO_INCREMENT,
   `products_quantity` int(4) NOT NULL DEFAULT '0',
-  `warehouse_quantity` int(11) NOT NULL,
+  `store_quantity` int(11) NOT NULL,
   `products_model` varchar(64) DEFAULT NULL,
   `products_image` varchar(128) DEFAULT NULL,
   `products_mediumimage` varchar(128) DEFAULT NULL,
@@ -26546,6 +26555,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `item_listed_on_ebay` enum( '0', '1' ) NOT NULL DEFAULT '0',
   `variation_theme_id` int(4) NOT NULL default '0',
   `amazon_category_id` int(11) NOT NULL default '0',
+  `avalara_tax_code` VARCHAR( 255 ) NOT NULL,
   PRIMARY KEY (`products_id`),
   KEY `idx_products_date_added` (`products_date_added`),
   KEY `products_model` (`products_model`),
@@ -33311,3 +33321,99 @@ CREATE TABLE IF NOT EXISTS `products_variations` (
   PRIMARY KEY (`products_variations_id`),
   UNIQUE KEY `product_variation` (`products_id`,`variation_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
+INSERT INTO `vendors` (`vendors_id`, `vendors_contact`, `vendors_name`, `vendors_phone1`, `vendors_phone2`, `vendors_fax`, `vendors_email`, `vendors_url`, `vendors_comments`, `date_added`, `last_modified`, `vendors_image`, `vendors_send_email`, `vendors_status_send`, `vendors_zipcode`, `vendor_street`, `vendor_add2`, `vendor_city`, `vendor_state`, `vendor_country`, `vendor_add_info`, `account_number`, `handling_charge`, `handling_per_box`, `tare_weight`, `max_box_weight`, `percent_tare_weight`, `zones`) VALUES
+(9999, '', 'FFL Shipping Vendor', '', '', '', '', '', NULL, NULL, NULL, NULL, 0, 1, '07728', 'AIRWAY ROAD SUITE 7', '', 'Freehold', 'NJ', '223', '', '', 0.00, 0.000, 0.00, 0.000, 0, 0);
+
+CREATE TABLE IF NOT EXISTS `manage_shipping_labels` (
+  `manage_shipping_labels_id` int(11) NOT NULL AUTO_INCREMENT,
+  `manage_order_shipping_id` int(11) NOT NULL,
+  `courier` varchar(255) NOT NULL,
+  `tracking_number` varchar(255) NOT NULL,
+  `shipping_method` varchar(255) NOT NULL,
+  PRIMARY KEY (`manage_shipping_labels_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
+
+CREATE TABLE IF NOT EXISTS `manage_order_shipping` (
+  `manage_order_shipping_id` int(11) NOT NULL AUTO_INCREMENT,
+  `orders_id` int(11) NOT NULL,
+  `products_id` int(11) NOT NULL,
+  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`manage_order_shipping_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
+
+CREATE TABLE IF NOT EXISTS `ffl_dealers_docs` (
+  `ffl_dealers_docs_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ffl_dealers_doc` varchar(255) NOT NULL,
+  `vendors_id` int(11) NOT NULL,
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`ffl_dealers_docs_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+CREATE TABLE IF NOT EXISTS `ffl_dealers_data` (
+  `lic_regn` varchar(255) NOT NULL,
+  `lic_dist` varchar(255) NOT NULL,
+  `lic_cnty` varchar(255) NOT NULL,
+  `lic_type` varchar(255) NOT NULL,
+  `lic_xprdte` varchar(255) NOT NULL,
+  `lic_seqn` varchar(255) NOT NULL,
+  `license_name` varchar(255) NOT NULL,
+  `business_name` varchar(255) NOT NULL,
+  `premise_street` varchar(255) NOT NULL,
+  `premise_city` varchar(255) NOT NULL,
+  `premise_state` varchar(255) NOT NULL,
+  `premise_zip_code` varchar(255) NOT NULL,
+  `mail_street` varchar(255) NOT NULL,
+  `mail_city` varchar(255) NOT NULL,
+  `mail_state` varchar(255) NOT NULL,
+  `mail_zip_code` varchar(255) NOT NULL,
+  `voice_phone` varchar(255) NOT NULL,
+  `ffl_dealers_docs_id` int(11) NOT NULL DEFAULT '0',
+  `latitude` double(14,6) NOT NULL,
+  `longitude` double(14,6) NOT NULL,
+  `ffl_dealers_data_id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`ffl_dealers_data_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13195 ;
+
+CREATE TABLE IF NOT EXISTS `avatax_log` (
+  `avatax_log_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `response` text NOT NULL,
+  `action` varchar(255) NOT NULL,
+  `request` text NOT NULL,
+  PRIMARY KEY (`avatax_log_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2366 ;
+
+CREATE TABLE IF NOT EXISTS `avatax_code_list` (
+  `tax_code` varchar(255) NOT NULL,
+  `tax_code_description` varchar(255) NOT NULL,
+  `tax_code_type` varchar(255) NOT NULL,
+  `tax_code_category` varchar(255) NOT NULL,
+  PRIMARY KEY (`tax_code`),
+  UNIQUE KEY `tax_code` (`tax_code`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `orders_ffl` (
+  `orders_ffl_id` int(11) NOT NULL AUTO_INCREMENT,
+  `orders_id` int(11) NOT NULL,
+  `license_name` varchar(255) NOT NULL,
+  `voice_phone` varchar(255) NOT NULL,
+  `premise_street` varchar(255) NOT NULL,
+  `premise_city` varchar(255) NOT NULL,
+  `premise_state` varchar(255) NOT NULL,
+  `premise_zip_code` varchar(255) NOT NULL,
+  `ffl_dealers_data_id` int(11) NOT NULL,
+  PRIMARY KEY (`orders_ffl_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+
+INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configuration_key`, `configuration_value`, `configuration_description`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
+(2235, 'Avalara License Key', 'MODULE_ORDER_TOTAL_AVATAX_LICENSE_KEY', '59E0D1672B31F660', 'Avalara License Key', 6, 17, NULL, '2016-04-22 00:00:00', NULL, NULL),
+(2236, 'Avalara Service URL', 'MODULE_ORDER_TOTAL_AVATAX_SERVICE_URL', 'https://development.avalara.net', 'Avalara Service URL', 6, 18, NULL, '2016-04-22 00:00:00', NULL, NULL),
+(2237, 'Avalara Disable Document Commiting', 'MODULE_ORDER_TOTAL_AVATAX_DOCUMENT_COMMITING', '0', 'Disable Document Commiting (1 = enable,0 = disable)', 6, 19, NULL, '2016-04-22 00:00:00', NULL, NULL),
+(2238, 'Avalara Enable Logging', 'MODULE_ORDER_TOTAL_AVATAX_ENABLE_LOGGING', '1', 'Avalara Enable Logging (1 = enable,0 = disable)', 6, 20, NULL, '2016-04-22 00:00:00', NULL, NULL),
+(2263, 'Avalara Account Number', 'MODULE_ORDER_TOTAL_AVATAX_ACCOUNT_NUMBER', '2000154982', 'Avalara Account Number', 6, 16, '2016-04-26 13:23:59', '2016-04-26 00:00:00', NULL, NULL),
+(2264, 'Avatax Address Valid Countries', 'MODULE_ORDER_TOTAL_AVATAX_VALID_COUNTRIES', '223,2,18,81,239,188,16,15,6,7', 'valid countries', 6, 99999, '2016-04-26 18:42:50', '2016-04-26 00:00:00', NULL, NULL),
+(2284, 'Avalara Exemption No', 'MODULE_ORDER_TOTAL_AVATAX_EXEMPTION_NO', 'ECMS', 'Avalara Exemption No', 6, 19, '2016-05-12 14:01:10', '2016-05-12 00:00:00', NULL, NULL);
+
+INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configuration_key`, `configuration_value`, `configuration_description`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
+(2262, 'Products Deduction', 'PRODUCTS_DEDUCTION_PRIORITY', 'WQ', 'Select from where the products should be deducted first (SQ = Store Quantity, WQ = Warehouse Quantity)', 1, 99999, '2016-05-09 01:11:53', '2016-04-21 00:00:00', NULL, 'tep_cfg_select_option(array(''SQ'', ''WQ''),');

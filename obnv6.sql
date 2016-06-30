@@ -33417,3 +33417,9 @@ INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configu
 
 INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configuration_key`, `configuration_value`, `configuration_description`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
 (2262, 'Products Deduction', 'PRODUCTS_DEDUCTION_PRIORITY', 'WQ', 'Select from where the products should be deducted first (SQ = Store Quantity, WQ = Warehouse Quantity)', 1, 99999, '2016-05-09 01:11:53', '2016-04-21 00:00:00', NULL, 'tep_cfg_select_option(array(''SQ'', ''WQ''),');
+
+INSERT INTO `orders_status` (`orders_status_id`, `language_id`, `orders_status_name`) VALUES
+(12, 1, 'Return');
+
+INSERT INTO `admin_functionality_search` (`id`, `parent`, `name`, `keywords`, `file`) VALUES
+(149, 'Configuration', 'Avalara Configuration ', 'Configuration,Avalara,Ava,Avatax', 'avalara.php');
